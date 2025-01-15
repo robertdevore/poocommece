@@ -7,7 +7,7 @@ import {
 	PaymentProvider,
 	PAYMENT_SETTINGS_STORE_NAME,
 	WC_ADMIN_NAMESPACE,
-} from '@woocommerce/data';
+} from '@poocommerce/data';
 import { useDispatch } from '@wordpress/data';
 import { useMemo } from '@wordpress/element';
 import { decodeEntities } from '@wordpress/html-entities';
@@ -53,7 +53,7 @@ export const PaymentGateways = ( {
 	const { invalidateResolution } = useDispatch( PAYMENT_SETTINGS_STORE_NAME );
 
 	/**
-	 * Generates a list of country options from the WooCommerce settings.
+	 * Generates a list of country options from the PooCommerce settings.
 	 */
 	const countryOptions = useMemo( () => {
 		return Object.entries( window.wcSettings.countries || [] )
@@ -69,12 +69,12 @@ export const PaymentGateways = ( {
 		<div className="settings-payment-gateways">
 			<div className="settings-payment-gateways__header">
 				<div className="settings-payment-gateways__header-title">
-					{ __( 'Payment providers', 'woocommerce' ) }
+					{ __( 'Payment providers', 'poocommerce' ) }
 				</div>
 				<div className="settings-payment-gateways__header-select-container">
 					<CountrySelector
-						className="woocommerce-select-control__country"
-						label={ __( 'Business location :', 'woocommerce' ) }
+						className="poocommerce-select-control__country"
+						label={ __( 'Business location :', 'poocommerce' ) }
 						placeholder={ '' }
 						value={
 							countryOptions.find(

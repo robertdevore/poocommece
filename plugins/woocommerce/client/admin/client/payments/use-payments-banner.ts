@@ -9,7 +9,7 @@ import {
 	type PaymentSelectors,
 	type OnboardingSelectors,
 	type WPDataSelectors,
-} from '@woocommerce/data';
+} from '@poocommerce/data';
 
 /**
  * Internal dependencies
@@ -41,14 +41,14 @@ export const usePaymentsBanner = () => {
 
 	const isWcPayInstalled = installedPaymentGateways.some(
 		( gateway: PaymentGateway ) => {
-			return gateway.id === 'woocommerce_payments';
+			return gateway.id === 'poocommerce_payments';
 		}
 	);
 
 	const isWcPayDisabled = installedPaymentGateways.find(
 		( gateway: PaymentGateway ) => {
 			return (
-				gateway.id === 'woocommerce_payments' &&
+				gateway.id === 'poocommerce_payments' &&
 				gateway.enabled === false
 			);
 		}

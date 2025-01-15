@@ -31,7 +31,7 @@
 				"@testing-library/*",
 				"@types/*",
 				"@typescript-eslint/*",
-				"@woocommerce/*",
+				"@poocommerce/*",
 				"@wordpress/api-fetch",
 				"@wordpress/autop",
 				"@wordpress/babel-preset-default",
@@ -77,8 +77,8 @@
 				"webpack*"
 			],
 			"packages": [
-				"@woocommerce/block-library",
-				"@woocommerce/storybook"
+				"@poocommerce/block-library",
+				"@poocommerce/storybook"
 			],
 			"isIgnored": true
 		},
@@ -92,7 +92,7 @@
 			]
 		},
 		{
-			"label": "React-related dependencies: @woocommerce/blocks-library",
+			"label": "React-related dependencies: @poocommerce/blocks-library",
 			"dependencies": [
 				"react",
 				"react-dom",
@@ -101,8 +101,8 @@
 			],
 			"pinVersion": "18.3.x",
 			"packages": [
-				"@woocommerce/block-library",
-				"@woocommerce/storybook"
+				"@poocommerce/block-library",
+				"@poocommerce/storybook"
 			]
 		},
 		{
@@ -221,11 +221,11 @@
 				"@wordpress/icons"
 			],
 			"packages": [
-				"@woocommerce/block-templates",
-				"@woocommerce/product-editor",
-				"@woocommerce/settings-editor",
-				"@woocommerce/admin-library",
-				"@woocommerce/components"
+				"@poocommerce/block-templates",
+				"@poocommerce/product-editor",
+				"@poocommerce/settings-editor",
+				"@poocommerce/admin-library",
+				"@poocommerce/components"
 			],
 			"isIgnored": true
 		},
@@ -234,7 +234,7 @@
 				"@wordpress/**"
 			],
 			"packages": [
-				"@woocommerce/experimental"
+				"@poocommerce/experimental"
 			],
 			"isIgnored": true
 		},
@@ -261,7 +261,7 @@
 				"@wordpress/env"
 			],
 			"packages": [
-				"@woocommerce/block-library",
+				"@poocommerce/block-library",
 				"**"
 			],
 			"pinVersion": "10.14.0"
@@ -397,8 +397,8 @@
 				"babel-jest"
 			],
 			"packages": [
-				"@woocommerce/block-library",
-				"@woocommerce/storybook"
+				"@poocommerce/block-library",
+				"@poocommerce/storybook"
 			],
 			"pinVersion": "29.7.x"
 		},

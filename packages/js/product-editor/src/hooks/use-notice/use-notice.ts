@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { resolveSelect, useDispatch, useSelect } from '@wordpress/data';
-import { OPTIONS_STORE_NAME } from '@woocommerce/data';
+import { OPTIONS_STORE_NAME } from '@poocommerce/data';
 
 /**
  * Internal dependencies
@@ -16,11 +16,11 @@ export function useNotice() {
 		const { getOption, hasFinishedResolution } =
 			select( OPTIONS_STORE_NAME );
 
-		// @ts-expect-error Todo: awaiting more global fix, demo: https://github.com/woocommerce/woocommerce/pull/54146
+		// @ts-expect-error Todo: awaiting more global fix, demo: https://github.com/poocommerce/poocommerce/pull/54146
 		const dismissedNoticesOption = getOption(
 			SINGLE_VARIATION_NOTICE_DISMISSED_OPTION
 		) as [ number ];
-		// @ts-expect-error Todo: awaiting more global fix, demo: https://github.com/woocommerce/woocommerce/pull/54146
+		// @ts-expect-error Todo: awaiting more global fix, demo: https://github.com/poocommerce/poocommerce/pull/54146
 		const resolving = ! hasFinishedResolution( 'getOption', [
 			SINGLE_VARIATION_NOTICE_DISMISSED_OPTION,
 		] );

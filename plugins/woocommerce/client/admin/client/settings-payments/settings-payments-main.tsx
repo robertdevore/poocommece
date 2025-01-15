@@ -9,11 +9,11 @@ import {
 	PaymentProvider,
 	type PaymentSettingsSelectors,
 	type PluginSelectors,
-} from '@woocommerce/data';
+} from '@poocommerce/data';
 import { resolveSelect, useDispatch, useSelect } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-import { getHistory, getNewPath } from '@woocommerce/navigation';
+import { getHistory, getNewPath } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -36,7 +36,7 @@ import {
 import { WooPaymentsPostSandboxAccountSetupModal } from '~/settings-payments/components/modals';
 
 /**
- * A component that renders the main settings page for managing payment gateways in WooCommerce.
+ * A component that renders the main settings page for managing payment gateways in PooCommerce.
  * It handles fetching and displaying payment providers, managing plugin installations, and
  * displaying incentive banners or modals when applicable.
  */
@@ -59,7 +59,7 @@ export const SettingsPaymentsMain = () => {
 	] = useState( false );
 
 	const [ storeCountry, setStoreCountry ] = useState< string | null >(
-		window.wcSettings?.admin?.woocommerce_payments_nox_profile
+		window.wcSettings?.admin?.poocommerce_payments_nox_profile
 			?.business_country_code || null
 	);
 
@@ -75,7 +75,7 @@ export const SettingsPaymentsMain = () => {
 					/* translators: %s: plugin name */
 					__(
 						'%s: An error occurred while setting up your sandbox account — please try again.',
-						'woocommerce'
+						'poocommerce'
 					),
 					'WooPayments'
 				)
@@ -91,7 +91,7 @@ export const SettingsPaymentsMain = () => {
 					/* translators: %s: plugin name */
 					__(
 						'%s: There was a problem connecting your WordPress.com account — please try again.',
-						'woocommerce'
+						'poocommerce'
 					),
 					'WooPayments'
 				)

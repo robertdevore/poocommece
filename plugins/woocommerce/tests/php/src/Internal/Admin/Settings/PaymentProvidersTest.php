@@ -1,13 +1,13 @@
 <?php
 declare( strict_types=1 );
 
-namespace Automattic\WooCommerce\Tests\Internal\Admin\Settings;
+namespace Automattic\PooCommerce\Tests\Internal\Admin\Settings;
 
-use Automattic\WooCommerce\Internal\Admin\Settings\PaymentProviders;
-use Automattic\WooCommerce\Internal\Admin\Settings\Payments;
-use Automattic\WooCommerce\Internal\Admin\Suggestions\PaymentExtensionSuggestions;
-use Automattic\WooCommerce\Internal\Admin\Suggestions\PaymentExtensionSuggestions as ExtensionSuggestions;
-use Automattic\WooCommerce\Tests\Internal\Admin\Settings\Mocks\FakePaymentGateway;
+use Automattic\PooCommerce\Internal\Admin\Settings\PaymentProviders;
+use Automattic\PooCommerce\Internal\Admin\Settings\Payments;
+use Automattic\PooCommerce\Internal\Admin\Suggestions\PaymentExtensionSuggestions;
+use Automattic\PooCommerce\Internal\Admin\Suggestions\PaymentExtensionSuggestions as ExtensionSuggestions;
+use Automattic\PooCommerce\Tests\Internal\Admin\Settings\Mocks\FakePaymentGateway;
 use PHPUnit\Framework\MockObject\MockObject;
 use WC_Unit_Test_Case;
 use WC_Gateway_BACS;
@@ -91,7 +91,7 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 	public function test_get_payment_gateway_base_details() {
 		// Arrange.
 		$fake_gateway = new FakePaymentGateway(
-			'woocommerce_payments',
+			'poocommerce_payments',
 			array(
 				'enabled'                     => true,
 				'account_connected'           => true,
@@ -101,8 +101,8 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 				'onboarding_started'          => true,
 				'onboarding_completed'        => true,
 				'test_mode_onboarding'        => true,
-				'plugin_slug'                 => 'woocommerce-payments',
-				'plugin_file'                 => 'woocommerce-payments/woocommerce-payments.php',
+				'plugin_slug'                 => 'poocommerce-payments',
+				'plugin_file'                 => 'poocommerce-payments/poocommerce-payments.php',
 				'recommended_payment_methods' => array(
 					// Basic PM.
 					array(
@@ -173,9 +173,9 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 		$this->assertArrayHasKey( 'settings', $gateway_details['management']['_links'], 'Gateway `management[_links][settings]` entry is missing' );
 		$this->assertArrayHasKey( 'plugin', $gateway_details, 'Gateway `plugin` entry is missing' );
 		$this->assertArrayHasKey( 'slug', $gateway_details['plugin'], 'Gateway `plugin[slug]` entry is missing' );
-		$this->assertSame( 'woocommerce-payments', $gateway_details['plugin']['slug'] );
+		$this->assertSame( 'poocommerce-payments', $gateway_details['plugin']['slug'] );
 		$this->assertArrayHasKey( 'file', $gateway_details['plugin'], 'Gateway `plugin[file]` entry is missing' );
-		$this->assertSame( 'woocommerce-payments/woocommerce-payments', $gateway_details['plugin']['file'] ); // No more .php extension.
+		$this->assertSame( 'poocommerce-payments/poocommerce-payments', $gateway_details['plugin']['file'] ); // No more .php extension.
 		$this->assertArrayHasKey( 'status', $gateway_details['plugin'], 'Gateway `plugin[status]` entry is missing' );
 		$this->assertSame( PaymentProviders::EXTENSION_ACTIVE, $gateway_details['plugin']['status'] );
 		$this->assertArrayHasKey( 'onboarding', $gateway_details, 'Gateway `onboarding` entry is missing' );
@@ -251,8 +251,8 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 		$slug           = $this->sut->get_payment_gateway_plugin_slug( $paypal_gateway );
 
 		// Assert.
-		// The PayPal gateway is a core gateway, so the slug is 'woocommerce'.
-		$this->assertSame( 'woocommerce', $slug );
+		// The PayPal gateway is a core gateway, so the slug is 'poocommerce'.
+		$this->assertSame( 'poocommerce', $slug );
 	}
 
 	/**
@@ -1076,8 +1076,8 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 			'description'       => 'Description 1',
 			'plugin'            => array(
 				'_type'  => ExtensionSuggestions::PLUGIN_TYPE_WPORG,
-				'slug'   => 'woocommerce', // Use WooCommerce because it is an installed plugin, obviously.
-				'file'   => 'woocommerce/woocommerce',
+				'slug'   => 'poocommerce', // Use PooCommerce because it is an installed plugin, obviously.
+				'file'   => 'poocommerce/poocommerce',
 				'status' => PaymentProviders::EXTENSION_INSTALLED,
 			),
 			'image'             => 'http://example.com/image1.png',
@@ -1109,7 +1109,7 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 	 */
 	public function test_get_extension_suggestion_by_plugin_slug() {
 		// Arrange.
-		$slug               = 'woocommerce'; // Use WooCommerce because it is an active plugin.
+		$slug               = 'poocommerce'; // Use PooCommerce because it is an active plugin.
 		$suggestion_details = array(
 			'id'                => 'suggestion1',
 			'_priority'         => 1,
@@ -1119,7 +1119,7 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 			'plugin'            => array(
 				'_type'  => ExtensionSuggestions::PLUGIN_TYPE_WPORG,
 				'slug'   => $slug,
-				'file'   => 'woocommerce/woocommerce',
+				'file'   => 'poocommerce/poocommerce',
 				'status' => PaymentProviders::EXTENSION_INSTALLED,
 			),
 			'image'             => 'http://example.com/image1.png',
@@ -1652,15 +1652,15 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 		$offline_payment_methods_gateways = array(
 			WC_Gateway_BACS::ID   => array(
 				'enabled'     => false,
-				'plugin_slug' => 'woocommerce',
+				'plugin_slug' => 'poocommerce',
 			),
 			WC_Gateway_Cheque::ID => array(
 				'enabled'     => false,
-				'plugin_slug' => 'woocommerce',
+				'plugin_slug' => 'poocommerce',
 			),
 			WC_Gateway_COD::ID    => array(
 				'enabled'     => false,
-				'plugin_slug' => 'woocommerce',
+				'plugin_slug' => 'poocommerce',
 			),
 		);
 
@@ -4515,14 +4515,14 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 	private function load_core_paypal_pg() {
 		// Make sure the WC core PayPal gateway is loaded.
 		update_option(
-			'woocommerce_paypal_settings',
+			'poocommerce_paypal_settings',
 			array(
 				'_should_load' => 'yes',
 				'enabled'      => 'no',
 			)
 		);
 		// Make sure the store currency is supported by the gateway.
-		update_option( 'woocommerce_currency', 'USD' );
+		update_option( 'poocommerce_currency', 'USD' );
 		WC()->payment_gateways()->payment_gateways = array();
 		WC()->payment_gateways()->init();
 
@@ -4538,14 +4538,14 @@ class PaymentProvidersTest extends WC_Unit_Test_Case {
 	private function enable_core_paypal_pg() {
 		// Enable the WC core PayPal gateway.
 		update_option(
-			'woocommerce_paypal_settings',
+			'poocommerce_paypal_settings',
 			array(
 				'_should_load' => 'yes',
 				'enabled'      => 'yes',
 			)
 		);
 		// Make sure the store currency is supported by the gateway.
-		update_option( 'woocommerce_currency', 'USD' );
+		update_option( 'poocommerce_currency', 'USD' );
 		WC()->payment_gateways()->payment_gateways = array();
 		WC()->payment_gateways()->init();
 
